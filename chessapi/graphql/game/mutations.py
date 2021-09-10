@@ -29,6 +29,7 @@ class BoardUpdate(graphene.Mutation):
 
     @classmethod
     def mutate(cls, root, info, rows, cols):
+        # load or create the default board
         board = models.Board.load()
         board.rows = rows
         board.cols = cols

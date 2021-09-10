@@ -27,6 +27,7 @@ def test_query_pieces(client_query, knight):
     assert piece['pieceType'] == "KNIGHT"
 
 
+# get the horse movements for "d4" position
 def test_movements(client_query, knight):
     response = client_query(QUERY_MOVEMENTS)
     content = json.loads(response.content)

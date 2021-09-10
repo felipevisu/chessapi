@@ -4,6 +4,7 @@ from itertools import product
 from . import PieceType
 
 
+# interface with movements function implementations
 class PieceInterface(metaclass=ABCMeta):
     def __init__(self, piece, position):
         self.piece = piece
@@ -12,6 +13,7 @@ class PieceInterface(metaclass=ABCMeta):
     def __str__(self):
         return f"{self.piece.piece_type} {self.position}"
 
+    # each type of piece has its function implemented
     @abstractmethod
     def get_movements(self): 
         raise NotImplementedError
@@ -34,8 +36,10 @@ class KnightBuilder(PieceInterface):
     def get_movements(self, cols: int, rows: int):
         x, y = position_to_coordinate(self.position)
         if x > cols or y > rows:
+            # column or rows exceed board limitations
             raise Exception('Invalid position')
 
+        # generate the movements, filter the possibles and translate do algebric notation
         movements = list(product([x-1, x+1],[y-2, y+2])) + list(product([x-2,x+2],[y-1,y+1]))
         movements = [(x,y) for x, y in movements if x >= 1 and y >= 1 and x < cols and y < rows]
         movements = [coordinate_to_position(movement[0], movement[1]) for movement in movements]

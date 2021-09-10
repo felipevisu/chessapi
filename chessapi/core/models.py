@@ -1,6 +1,7 @@
 from django.db import models
 
 
+# only one of this model can be created
 class SingletonModel(models.Model):
 
     class Meta:

@@ -9,9 +9,10 @@ class Piece(models.Model):
     piece_type = models.CharField(max_length=20, choices=PieceType.CHOICES)
 
     def __str__(self):
-        return str(self.piece_type)
+        return f"{self.color} {self.piece_type}"
 
 
+# represents a chessboard
 class Board(SingletonModel):
     rows = models.PositiveIntegerField(default=8)
     cols = models.PositiveIntegerField(default=8)
