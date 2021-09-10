@@ -13,3 +13,10 @@ class Piece(DjangoObjectType):
     class Meta:
         model = models.Piece
         fields = ["id", "color", "piece_type"]
+
+
+class Board(DjangoObjectType):
+    
+    class Meta:
+        model = models.Board
+        fields = ['id', 'rows', 'cols']

@@ -1,5 +1,6 @@
 from django.db import models
 
+from ..core.models import SingletonModel
 from . import Color, PieceType
 
 
@@ -9,3 +10,11 @@ class Piece(models.Model):
 
     def __str__(self):
         return str(self.piece_type)
+
+
+class Board(SingletonModel):
+    rows = models.PositiveIntegerField(default=8)
+    cols = models.PositiveIntegerField(default=8)
+
+    def __str__(self):
+        return f"Board {self.rows}x{self.cols}"
