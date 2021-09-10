@@ -13,10 +13,16 @@ def get_movements(id, position):
     if not validate_position(position):
         raise Exception('Invalid position')
 
-    piece = get_piece_builder(obj, position)
     board = Board.load()
+    piece = get_piece_builder(obj, position)
     movements = piece.get_movements(board.cols, board.rows)
-    return movements
+
+    second_turn = []
+    for movement in movements:
+        piece = get_piece_builder(obj, movement)
+        second_turn += piece.get_movements(board.cols, board.rows)
+
+    return list(dict.fromkeys(second_turn))
 
 
 def validate_position(position):
