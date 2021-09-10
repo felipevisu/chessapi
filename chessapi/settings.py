@@ -1,3 +1,4 @@
+import django_heroku
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -90,3 +91,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 GRAPHENE = {
     "SCHEMA": "chessapi.graphql.schema.schema"
 }
+
+django_heroku.settings(locals())
