@@ -17,12 +17,13 @@ def get_movements(id, position):
     piece = get_piece_builder(obj, position)
     movements = piece.get_movements(board.cols, board.rows)
 
+    # get the second turn movements
     second_turn = []
     for movement in movements:
         piece = get_piece_builder(obj, movement)
         second_turn += piece.get_movements(board.cols, board.rows)
 
-    return list(dict.fromkeys(second_turn))
+    return list(dict.fromkeys(second_turn)) # remove duplicates
 
 
 def validate_position(position):

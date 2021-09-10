@@ -8,7 +8,7 @@ from ...game import PieceType, Color
 @pytest.fixture
 def client_query(client):
     def func(*args, **kwargs):
-        return graphql_query(*args, **kwargs, client=client)
+        return graphql_query(*args, **kwargs, client=client, graphql_url="/")
 
     return func
 

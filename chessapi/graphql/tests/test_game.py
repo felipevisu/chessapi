@@ -19,7 +19,7 @@ query {
 
 def test_query_pieces(client_query, knight):
     response = client_query(QUERY_PIECES)
-    content = response.json()
+    content = json.loads(response.content)
     piece = content['data']['pieces'][0]
 
     assert 'errors' not in content
@@ -30,7 +30,7 @@ def test_query_pieces(client_query, knight):
 # get the horse movements for "d4" position
 def test_movements(client_query, knight):
     response = client_query(QUERY_MOVEMENTS)
-    content = response.json()
+    content = json.loads(response.content)
     movements = content['data']['movements']
 
     assert 'errors' not in content
